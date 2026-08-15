@@ -114,10 +114,9 @@ or omissions preserved per snapshot:
 
 Standalone research utilities from the submission archives are not bundled.
 In particular, `seq_NN_data_prep_pf_opt.py` is a PF optimization/benchmark
-harness, and `seq_NN_geo_condition_analysis.py` is a post-training geo-prior
-analysis harness. No training or inference module imports or invokes either
-file. The active pipeline implementations are in `seq_NN_data_prep.py` and
-`seq_NN_geo_prior.py`, respectively.
+harness. No training or inference module imports or invokes this utility. The
+active pipeline implementations are in `seq_NN_data_prep.py` and
+`seq_NN_geo_prior.py`.
 
 `seq_NN_main_reproduce.py` is the package-level orchestration wrapper. It loads
 one bundled snapshot, applies the relative settings paths, selects one recipe,
