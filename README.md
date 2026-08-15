@@ -160,10 +160,18 @@ Training one ID writes under `reproduction_outputs/<ID>/`:
 - `cfg.pkl` and `seq_nn.log`: resolved config and execution log.
 
 The settings and data inputs are read-only. PF heatmap caches are derived under
-the internal `PF_cache/` path and can be regenerated when absent. Seeds are
-fixed, but strict CUDA determinism is intentionally disabled in the historical
-recipes; retrained weights and predictions can therefore vary slightly across
-GPU/software stacks.
+the internal `PF_cache/` path and can be regenerated when absent. Reproduction
+is stochastic by design. The archived recipes seed the Python, NumPy, PyTorch,
+CUDA, data-loader, and fold-splitting random-number generators, but strict
+deterministic CUDA kernels are intentionally disabled. Enabling strict
+deterministic algorithms would make CNN training substantially slower, so the
+historical speed-oriented setting is retained. Some CUDA/library operations and
+environment-dependent execution paths can still produce different results, and
+any random-number source outside the explicitly seeded streams may not be fully
+controlled. Retraining should therefore be expected to produce slightly
+different weights, predictions, and metrics across runs, GPUs, drivers, or
+software stacks. Exact byte-for-byte reproduction is not guaranteed; compare
+results within a reasonable numerical tolerance.
 
 For the final six-family ensemble and saved-model inference, use the existing
 notebook implementation:
