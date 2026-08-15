@@ -1,17 +1,18 @@
 # Entry Points
 
-All commands below must be run with the current working directory set to the
-`submission_model` directory. The defaults in `SETTINGS.json` are relative to
-that file and already point to the bundled data, six bundled snapshots,
-internal cache directories, and `reproduction_outputs/`. Running from the
-repository root or from a result subdirectory is not the documented workflow.
+Unless a command says otherwise, run the commands below with the current working
+directory set to the repository root, the directory containing this file. The
+defaults in `SETTINGS.json` are relative to that file and already point to the
+bundled data, six bundled snapshots, internal cache directories, and
+`reproduction_outputs/`. Running from a result subdirectory is not the
+documented workflow.
 
 The launcher is Bash, not Python. Set `PYTHON_BIN` when the active Python is
 not the environment containing the pinned packages. Before a reproduction,
 raise the open-file limit in the same shell:
 
 ```bash
-cd /path/to/submission_model
+cd /path/to/your/clone
 ulimit -n 8192
 ```
 

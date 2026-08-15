@@ -4,7 +4,7 @@
 This file deliberately contains orchestration only.  The actual data loading,
 model definition, loss, fold construction, checkpoint selection, and inference
 remain in the bundled ``reference_results/<ID>/seq_NN_*.py`` snapshot.  Run it
-from the ``submission_model`` directory, for example::
+from the repository root (the directory containing this file), for example::
 
     python seq_NN_main_reproduce.py --id 0801_V2
 
@@ -78,9 +78,9 @@ def _log(message: str) -> None:
 def _settings_candidates() -> list[Path]:
     """Find SETTINGS.json without embedding a checkout-specific absolute path.
 
-    In the documented workflow the wrapper is run from ``submission_model``,
-    but searching parent package directories also keeps explicit relocation
-    and notebook use convenient.  An explicit ``--settings`` always wins.
+    In the documented workflow the wrapper is run from the repository root,
+    but searching parent directories also keeps explicit relocation and
+    notebook use convenient.  An explicit ``--settings`` always wins.
     """
 
     script_dir = Path(__file__).resolve().parent
@@ -88,7 +88,7 @@ def _settings_candidates() -> list[Path]:
     bases = [script_dir, cwd, *script_dir.parents, *cwd.parents]
     candidates: list[Path] = []
     for base in bases:
-        candidates.extend((base / "SETTINGS.json", base / "submission_model" / "SETTINGS.json"))
+        candidates.append(base / "SETTINGS.json")
     # Preserve order while removing duplicates.
     return list(dict.fromkeys(candidates))
 
@@ -258,8 +258,8 @@ def apply_settings_paths(cfg, settings: dict[str, Any], output_dir: Path) -> Non
     # Archived configs intentionally store None here and resolve the implicit
     # map as data_dir/train_png_typewell_map.csv.  Preserve that exact value
     # whenever the map is present under data_dir.  In a new environment where
-    # only submission_model/data/train_png_typewell_map.csv is available, use
-    # the explicit settings path as the equivalent fallback.
+    # only the package's data/train_png_typewell_map.csv is available, use the
+    # explicit settings path as the equivalent fallback.
     implicit_map = paths["data_dir"] / "train_png_typewell_map.csv"
     if getattr(cfg, "cv_geo_map_path", None) is None and not implicit_map.is_file():
         cfg.cv_geo_map_path = paths["cv_geo_map_path"]

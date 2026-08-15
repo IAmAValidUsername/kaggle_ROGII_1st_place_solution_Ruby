@@ -1,12 +1,15 @@
 # Submission Model Reproduction
 
 **Start with [entry_points.md](entry_points.md). It is the authoritative
-step-by-step reproduction guide.** All commands in that guide are run from the
-`submission_model` directory.
+step-by-step reproduction guide.** Unless a command says otherwise, run the
+commands from the repository root, the directory containing this README.
+
+For the original competition context and the first-place solution details, see
+the [Kaggle technical write-up](https://www.kaggle.com/competitions/rogii-wellbore-geology-prediction/writeups/1st-place-solution).
 
 ## What is bundled
 
-This directory is a self-contained reproduction package. `SETTINGS.json` uses
+This repository is a self-contained reproduction package. `SETTINGS.json` uses
 only paths relative to itself, the train/test CSV data is copied under `data/`,
 and the six archived source/config/log bundles are under
 `reference_results/<ID>/`. No six-version archive needs to be downloaded from
@@ -30,7 +33,7 @@ omitted and are not treated as a reproduction dependency.
 ## Reproduction repository structure
 
 ```text
-submission_model/
+<repository-root>/
 |-- README.md
 |-- entry_points.md
 |-- SETTINGS.json

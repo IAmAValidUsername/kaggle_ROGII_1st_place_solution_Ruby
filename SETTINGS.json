@@ -1,5 +1,5 @@
 {
-  "description": "All paths are relative to this file; the submission_model directory is self-contained.",
+  "description": "All paths are relative to this file; the repository root is self-contained.",
   "paths": {
     "project_root": ".",
     "data_dir": "data",
