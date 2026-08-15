@@ -1,0 +1,21 @@
+{
+  "description": "All paths are relative to this file; the submission_model directory is self-contained.",
+  "paths": {
+    "project_root": ".",
+    "data_dir": "data",
+    "train_dir": "data/train",
+    "test_dir": "data/test",
+    "output_dir": "reproduction_outputs",
+    "pf_cache_dir": "PF_cache",
+    "cv_geo_map_path": "data/train_png_typewell_map.csv"
+  },
+  "reference_results_description": "Each ID maps to the bundled archived directory containing only that run's pipeline seq_NN*.py files, cfg.pkl, and seq_nn.log; models.pkl is intentionally excluded.",
+  "reference_results": {
+    "0719_V1": "reference_results/0719_V1",
+    "0724_V1": "reference_results/0724_V1",
+    "0729_V3": "reference_results/0729_V3",
+    "0801_V1": "reference_results/0801_V1",
+    "0801_V2": "reference_results/0801_V2",
+    "0803_V2": "reference_results/0803_V2"
+  }
+}
